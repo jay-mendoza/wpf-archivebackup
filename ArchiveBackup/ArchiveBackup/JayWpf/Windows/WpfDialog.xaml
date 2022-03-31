@@ -1,0 +1,177 @@
+﻿<!-- ······································································
+// <copyright file="WpfDialog.xaml" company="Jay Bautista Mendoza">      //
+//     Copyright (c) Jay Bautista Mendoza. All rights reserved.          //
+//     THIS IS PART OF MY PERSONAL OPEN SOURCE WPF WINDOW TEMPLATE.      //
+//     THIS IS NOT PRIVATE PROPERTY. FEEL FREE TO MODIFY OR USE IT.      //
+// </copyright>                                                          //
+······································································· -->
+    
+<Window
+    x:Class="JayWpf.Windows.WpfDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    AllowsTransparency="True"
+    Background="{DynamicResource ResourceKey=LightBackground}"
+    BorderBrush="{DynamicResource ResourceKey=NormalForeColor}"
+    BorderThickness="1"
+    Height="240"
+    Width="400"
+    WindowStyle="None">
+    
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="..\Styles\WpfDialogStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <ContextMenu x:Key="WindowControlContextMenu">
+                <MenuItem
+                    Click="CloseButton_Click"
+                    Header="Close">
+                    <MenuItem.Icon>
+                        <TextBlock
+                            FontFamily="Webdings"
+                            HorizontalAlignment="Center"
+                            Text="r"
+                            VerticalAlignment="Center"
+                            />
+                    </MenuItem.Icon>
+                </MenuItem>
+            </ContextMenu>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition Width="100*"/>
+            <ColumnDefinition Width="5"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="24"/>
+            <RowDefinition Height="5"/>
+            <RowDefinition Height="100*"/>
+            <RowDefinition Height="5"/>
+        </Grid.RowDefinitions>
+
+        <!-- RESIZE / REGIONS HANDLES -->
+        <Rectangle
+            x:Name="LL"
+            Fill="Transparent"
+            Grid.Column="0"
+            Grid.Row="1"
+            Grid.RowSpan="3"
+            MouseEnter="Resizer_MouseEnter"
+            MouseLeave="Resizer_MouseLeave"
+            PreviewMouseDown="Resizer_PreviewMouseDown"
+            />
+        <Rectangle
+            x:Name="TL"
+            Fill="Transparent" 
+            Grid.Column="0"
+            Grid.Row="0"
+            MouseEnter="Resizer_MouseEnter" 
+            MouseLeave="Resizer_MouseLeave"
+            PreviewMouseDown="Resizer_PreviewMouseDown"
+            />
+        <Rectangle
+            x:Name="TT" 
+            Fill="Transparent"
+            Grid.Column="1" 
+            Grid.Row="0"
+            MouseEnter="Resizer_MouseEnter" 
+            MouseLeave="Resizer_MouseLeave"
+            PreviewMouseDown="Resizer_PreviewMouseDown"
+            />
+        <Rectangle
+            x:Name="TR" 
+            Fill="Transparent"
+            Grid.Column="2"
+            Grid.Row="0"
+            MouseEnter="Resizer_MouseEnter"
+            MouseLeave="Resizer_MouseLeave"
+            PreviewMouseDown="Resizer_PreviewMouseDown"
+            />
+        <Rectangle
+            x:Name="RR"
+            Fill="Transparent"
+            Grid.Column="2"
+            Grid.Row="1"
+            Grid.RowSpan="3"
+            MouseEnter="Resizer_MouseEnter"
+            MouseLeave="Resizer_MouseLeave"
+            PreviewMouseDown="Resizer_PreviewMouseDown"
+            />
+        <Rectangle
+            x:Name="BR"
+            Fill="Transparent"
+            Grid.Column="2"
+            Grid.Row="4"
+            MouseEnter="Resizer_MouseEnter"
+            MouseLeave="Resizer_MouseLeave"
+            PreviewMouseDown="Resizer_PreviewMouseDown"
+            />
+        <Rectangle
+            x:Name="BB"
+            Fill="Transparent"
+            Grid.Column="1"
+            Grid.Row="4"
+            MouseEnter="Resizer_MouseEnter"
+            MouseLeave="Resizer_MouseLeave"
+            PreviewMouseDown="Resizer_PreviewMouseDown"
+            />
+        <Rectangle
+            x:Name="BL"
+            Fill="Transparent"
+            Grid.Column="0" 
+            Grid.Row="4"
+            MouseEnter="Resizer_MouseEnter"
+            MouseLeave="Resizer_MouseLeave"
+            PreviewMouseDown="Resizer_PreviewMouseDown"
+            />
+        <!-- RESIZE / REGIONS HANDLES -->
+
+        <!-- TOP WINDOW BUTTONS / TITLE BAR -->
+        <Grid Grid.Column="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="100*"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid
+                x:Name="TitleBarLogo"
+                ContextMenu="{StaticResource WindowControlContextMenu}"
+                Grid.Column="0"
+                MouseLeftButtonDown="TitleBarLogo_MouseLeftButtonDown"
+                Style="{StaticResource ResourceKey=TitleBarLogoStyle}">
+                <TextBlock
+                    x:Name="WindowIconTextBlock"
+                    Style="{StaticResource ResourceKey=WindowIconTextStyle}" />
+            </Grid>
+
+            <Rectangle
+                x:Name="Dragger"
+                ContextMenu="{StaticResource WindowControlContextMenu}"
+                Fill="Transparent" Grid.Column="1" PreviewMouseDown="Dragger_PreviewMouseDown"
+                />
+            <TextBlock
+                Grid.Column="1"
+                Style="{StaticResource ResourceKey=WindowTitleStyle}"
+                Text="{Binding Path = Title, RelativeSource = {RelativeSource AncestorType = {x:Type Window}}}"
+                />
+
+            <Button
+                x:Name="CloseButton"
+                Click="CloseButton_Click"
+                Grid.Column="2"
+                Style="{StaticResource ResourceKey=CloseButtonStyle}"
+                />
+
+        </Grid>
+        <!-- TOP WINDOW BUTTONS / TITLE BAR -->
+
+        <Frame x:Name="MainFrame" Grid.Column="1" Grid.Row="3"/>
+
+    </Grid>
+</Window>

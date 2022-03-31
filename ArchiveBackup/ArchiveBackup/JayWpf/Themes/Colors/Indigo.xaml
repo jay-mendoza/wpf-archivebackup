@@ -1,0 +1,15 @@
+﻿<!-- ······································································
+// <copyright file="Indigo.xaml" company="Jay Bautista Mendoza">           //
+//     Copyright (c) Jay Bautista Mendoza. All rights reserved.          //
+//     THIS IS PART OF MY PERSONAL OPEN SOURCE WPF WINDOW TEMPLATE.      //
+//     THIS IS NOT PRIVATE PROPERTY. FEEL FREE TO MODIFY OR USE IT.      //
+// </copyright>                                                          //
+······································································· -->
+    
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <SolidColorBrush x:Key="NormalBackColor" Color="#FF6060C0" />
+    <SolidColorBrush x:Key="NormalForeColor" Color="#FF7070D0" />
+
+</ResourceDictionary>

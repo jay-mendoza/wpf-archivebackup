@@ -1,0 +1,240 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="LabelStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="/JayWpf/Resources/Fonts/#DejaVu Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=LightForeground}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="ReadOnlyTextBoxStyle" TargetType="TextBox">
+        <Setter Property="AcceptsReturn" Value="True"/>
+        <Setter Property="FontFamily" Value="/JayWpf/Resources/Fonts/#DejaVu Sans Mono"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=LightForeground}"/>
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=LightBackground}"/>
+        <Setter Property="FontWeight" Value="100"/>
+        <Setter Property="FontSize" Value="11"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    
+    <Style x:Key="DropRectangleStyle" TargetType="Rectangle">
+        <Setter Property="Stroke" Value="{DynamicResource ResourceKey=NormalBackColor}"/>
+        <Setter Property="StrokeThickness" Value="1"/>
+        <Setter Property="Fill" Value="{DynamicResource ResourceKey=HeavyBackground}"/>
+        <Setter Property="ToolTipService.InitialShowDelay" Value="100"/>
+    </Style>
+    <Style x:Key="DropRectangleLabelStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="/JayWpf/Resources/Fonts/#DejaVu Sans"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=NormalBackColor}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="4 1 4 1"/>
+        <Setter Property="Text" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    
+    <Style x:Key="RadioButtonLabelStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=NormalBackColor}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0"/>
+        <Setter Property="Text" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="RadioButtonStyle" TargetType="RadioButton">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Height" Value="28"/>
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ToolTip}"/>
+        <Setter Property="Width" Value="66"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="RadioButton">
+                    <Grid>
+                        <Rectangle x:Name="ButtonRectangle" Fill="Transparent"
+                                   Stroke="{DynamicResource ResourceKey=NormalBackColor}" StrokeThickness="2"/>
+                        <TextBlock x:Name="ButtonText" Style="{StaticResource ResourceKey=RadioButtonLabelStyle}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Rectangle.Stroke"
+                                    TargetName="ButtonRectangle"
+                                    Value="{DynamicResource ResourceKey=ActiveBackColor}"/>
+                            <Setter Property="TextBlock.Foreground"
+                                    TargetName="ButtonText"
+                                    Value="{DynamicResource ResourceKey=ActiveBackColor}"/>
+                        </Trigger>
+                        <Trigger Property="IsChecked"  Value="True">
+                            <Setter Property="Rectangle.Stroke"
+                                    TargetName="ButtonRectangle"
+                                    Value="{DynamicResource ResourceKey=ActiveBackColor}"/>
+                            <Setter Property="TextBlock.Foreground"
+                                    TargetName="ButtonText"
+                                    Value="{DynamicResource ResourceKey=ActiveBackColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="FavoriteButtonLabelStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="/JayWpf/Resources/Fonts/#DejaVu Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=HeavyForeground}"/>
+        <Setter Property="Margin" Value="1 2 1 2"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="FavoriteButtonStyle" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ToolTip}"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Rectangle x:Name="RefreshBackground" Fill="{DynamicResource ResourceKey=NormalBackColor}"/>
+                        <TextBlock
+                            Style="{StaticResource ResourceKey=FavoriteButtonLabelStyle}"
+                            Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Rectangle.Fill"
+                                    TargetName="RefreshBackground"
+                                    Value="{DynamicResource ResourceKey=ActiveBackColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Margin" Value="1 1 1 1"/>
+    </Style>
+    
+    
+    
+    <Style x:Key="PathTextBlockStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="/JayWpf/Resources/Fonts/#DejaVu Sans"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=NormalBackColor}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+    </Style>
+
+    <Style x:Key="PathTextBoxStyle" TargetType="TextBox">
+        <Setter Property="Background" Value="{DynamicResource ResourceKey=MidHvBackground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource ResourceKey=NormalBackColor}"/>
+        <Setter Property="BorderThickness" Value="0 0 0 2"/>
+        <Setter Property="FontFamily" Value="/JayWpf/Resources/Fonts/#DejaVu Sans"/>
+        <Setter Property="FontSize" Value="16"/>
+        <Setter Property="FontWeight" Value="100"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=LightForeground}"/>
+    </Style>
+
+    <Style x:Key="PathBrowseButtonLabelStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="/JayWpf/Resources/Fonts/#DejaVu Sans"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=HeavyForeground}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="4 1 4 1"/>
+        <Setter Property="Text" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="PathBrowseButtonIconStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="/JayWpf/Resources/Fonts/#Wingdings"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=HeavyForeground}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="Text" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>    
+    <Style x:Key="PathBrowseButtonStyle" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ToolTip}"/>
+        <Setter Property="ToolTipService.InitialShowDelay" Value="0"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid>
+                        <Rectangle x:Name="RefreshBackground" Fill="{DynamicResource ResourceKey=NormalBackColor}"/>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock Style="{StaticResource ResourceKey=PathBrowseButtonIconStyle}"/>
+                            <TextBlock Style="{StaticResource ResourceKey=PathBrowseButtonLabelStyle}"/>
+                        </StackPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Rectangle.Fill"
+                                    TargetName="RefreshBackground"
+                                    Value="{DynamicResource ResourceKey=ActiveBackColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="PathDropLabelLabelStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="/JayWpf/Resources/Fonts/#DejaVu Sans"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=NormalBackColor}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="4 1 4 1"/>
+        <Setter Property="Text" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="PathDropLabelIconStyle" TargetType="TextBlock">
+        <Setter Property="FontFamily" Value="/JayWpf/Resources/Fonts/#DejaVu Sans"/>
+        <Setter Property="FontSize" Value="20"/>
+        <Setter Property="Foreground" Value="{DynamicResource ResourceKey=NormalBackColor}"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="1"/>
+        <Setter Property="Text" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Tag}"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+    <Style x:Key="PathDropLabelStyle" TargetType="Label">
+        <Setter Property="Cursor" Value="UpArrow"/>
+        <Setter Property="Height" Value="50"/>
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ToolTip}"/>
+        <Setter Property="ToolTipService.InitialShowDelay" Value="0"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Label">
+                    <Grid>
+                        <Rectangle
+                            x:Name="ButtonRectangle"
+                            Fill="{DynamicResource ResourceKey=HeavyBackground}"
+                            Stroke="{DynamicResource ResourceKey=NormalBackColor}"
+                            StrokeThickness="2"/>
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock x:Name="ButtonIcon" Style="{StaticResource ResourceKey=PathDropLabelIconStyle}"/>
+                            <TextBlock x:Name="ButtonText" Style="{StaticResource ResourceKey=PathDropLabelLabelStyle}"/>
+                        </StackPanel>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Rectangle.Stroke"
+                                    TargetName="ButtonRectangle"
+                                    Value="{DynamicResource ResourceKey=ActiveBackColor}"/>
+                            <Setter Property="TextBlock.Foreground"
+                                    TargetName="ButtonText"
+                                    Value="{DynamicResource ResourceKey=ActiveBackColor}"/>
+                            <Setter Property="TextBlock.Foreground"
+                                    TargetName="ButtonIcon"
+                                    Value="{DynamicResource ResourceKey=ActiveBackColor}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

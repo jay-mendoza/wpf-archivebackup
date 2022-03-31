@@ -1,0 +1,244 @@
+﻿<Page x:Class="ArchiveBackup.Views.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+	Title="MainPage">
+
+    <Page.Resources>
+        <ResourceDictionary Source=".\Styles\MainPage.xaml"/>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="5 10 5 5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="1 1 1 5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBox
+                        x:Name="TargetOnePathTextBox"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Style="{StaticResource ResourceKey=PathTextBoxStyle}"
+                        TextChanged="TargetOnePathTextBox_TextChanged"
+                        />
+                    <TextBlock
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Style="{StaticResource ResourceKey=PathTextBlockStyle}"
+                        Text="↑ Target Directory [A] ↑"
+                        />
+                    <Button
+                        x:Name="TargetOneBrowseButton"
+                        Click="TargetOneBrowseButton_Click"
+                        Content="browse"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Margin="2 0 0 0"
+                        Style="{StaticResource ResourceKey=PathBrowseButtonStyle}"
+                        Tag="0"
+                        />
+                    <Label
+                        x:Name="TargetOneDropTextBlock"
+                        AllowDrop="True"
+                        Content="get"
+                        Drop="TargetOneDropTextBlock_Drop"
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Margin="2 0 0 0"
+                        Tag="⟱"
+                        Style="{StaticResource ResourceKey=PathDropLabelStyle}"
+                        ToolTip="Drag &amp; drop a file/folder here to get the path."
+                        ToolTipService.InitialShowDelay="0"
+                        />
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100*"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                        
+                    <TextBox
+                        x:Name="TargetTwoPathTextBox"
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Style="{StaticResource ResourceKey=PathTextBoxStyle}"
+                        TextChanged="TargetOnePathTextBox_TextChanged"
+                        />
+                    <TextBlock
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Style="{StaticResource ResourceKey=PathTextBlockStyle}"
+                        Text="↑ Target Directory [B] ↑"
+                        />
+                    <Button
+                        x:Name="TargetTwoBrowseButton"
+                        Click="TargetTwoBrowseButton_Click"
+                        Content="browse"
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Margin="2 0 0 0"
+                        Style="{StaticResource ResourceKey=PathBrowseButtonStyle}"
+                        Tag="0"
+                        />
+                    <Label
+                        x:Name="TargetTwoDropTextBlock"
+                        AllowDrop="True"
+                        Content="get"
+                        Drop="TargetTwoDropTextBlock_Drop"
+                        Grid.Column="2"
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        Margin="2 0 0 0"
+                        Style="{StaticResource ResourceKey=PathDropLabelStyle}"
+                        Tag="⟱"
+                        ToolTip="Drag &amp; drop a file/folder here to get the path."
+                        ToolTipService.InitialShowDelay="0"
+                        />
+                </Grid>
+
+                
+            </Grid>
+
+            <Grid x:Name="DropGrid" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Margin="0 0 10 0">
+                    <TextBlock
+                        Margin="0 0 0 5"
+                        Style="{StaticResource ResourceKey=LabelStyle}"
+                        Text="Archive"
+                        />
+                    <RadioButton
+                        x:Name="ArchiveNoneRadioButton"
+                        Content="None"
+                        GroupName="ArchiveOptions"
+                        Margin="0 5 0 0"
+                        Style="{StaticResource ResourceKey=RadioButtonStyle}"
+                        />
+                    <RadioButton
+                        x:Name="ArchiveStoreRadioButton"
+                        Content="Store"
+                        GroupName="ArchiveOptions"
+                        Margin="0 5 0 0"
+                        Style="{StaticResource ResourceKey=RadioButtonStyle}"
+                        />
+                    <RadioButton
+                        x:Name="ArchiveNormalRadioButton"
+                        Content="Normal"
+                        GroupName="ArchiveOptions"
+                        Margin="0 5 0 0"
+                        Style="{StaticResource ResourceKey=RadioButtonStyle}"
+                        />
+                    <RadioButton
+                        x:Name="ArchiveUltraRadioButton"
+                        Content="Ultra"
+                        GroupName="ArchiveOptions"
+                        Margin="0 5 0 0"
+                        Style="{StaticResource ResourceKey=RadioButtonStyle}"
+                        />
+                </StackPanel>
+
+                <Grid Grid.Column="1">
+                    <Rectangle
+                        x:Name="DropRectangle"
+                        AllowDrop="True"
+                        Cursor="UpArrow"
+                        Drop="DropRectangle_Drop"
+                        Height="160"
+                        Style="{StaticResource ResourceKey=DropRectangleStyle}"
+                        />
+                    <TextBlock
+                        AllowDrop="True"
+                        Cursor="UpArrow"
+                        Drop="DropRectangle_Drop"
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource ResourceKey=DropRectangleLabelStyle}"
+                        Text="⟱ │ Drop Files Here"
+                        VerticalAlignment="Center"
+                        />
+                </Grid>
+            </Grid>
+
+            <WrapPanel
+                x:Name="FavoritesWrapPanel"
+                Grid.Row="2"
+                HorizontalAlignment="Center"
+                Margin="0 10 0 10"
+                Orientation="Horizontal">
+                <TextBlock
+                        Style="{StaticResource ResourceKey=LabelStyle}"
+                        Text="Favorites: "
+                        />
+            </WrapPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="1" Margin="5 5 5 10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBox
+                x:Name="StatusTextBox"
+                AllowDrop="False"
+                Style="{StaticResource ResourceKey=ReadOnlyTextBoxStyle}"
+                />
+
+        </Grid>
+
+    </Grid>
+</Page>
